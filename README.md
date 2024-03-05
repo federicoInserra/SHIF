@@ -31,11 +31,11 @@ By addressing this need, the proposed solution aims to enhance portfolio managem
 How it works ?
 
 1. User (fund manager) enter the application
-2. He sees a droodown menu with the different customers he is managing
+2. He sees a dropdown menu with the different customers he is managing
 3. Click on a particular customer
 4. Customer dashboard: Stocks, Funds, Age, name etc.
 5. In a textbox at the top enter the query "My customer want to invest more on chinese companies"
-6. And endpoint is called on the back-end and this is orchestrating different LLM agents runnning as App Services HTTPS endpoints (one agent is doing stocks suggestion, another is assessing results and explaining why the results are good sources for answering client questions, another takes querys as input and performs query expansion on the actual query, another performs re-rank etc)
+6. And endpoint is called on the back-end and this is orchestrating different LLM agents runnning as Python functions (one agent is doing stocks suggestion, another is assessing results and explaining why the results are good sources for answering client questions, another takes querys as input and performs query expansion on the actual query, another performs re-rank etc)
 6. The results are then rendered on the UI to show relevant information
 7. Different Atlas charts are rendered in the UI as well
 8. You can also see the raw JSON outpu from the LLM
