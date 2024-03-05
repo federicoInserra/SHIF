@@ -1,0 +1,1 @@
+{"options":{"timeseries":{"timeField":"day","metaField":"symbol","granularity":"hours","bucketMaxSpanSeconds":{"$numberInt":"2592000"}}},"indexes":[{"v":{"$numberInt":"2"},"key":{"symbol":{"$numberInt":"1"},"day":{"$numberInt":"1"}},"name":"symbol_1_day_1"}],"collectionName":"stocks","type":"timeseries"}

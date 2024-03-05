@@ -1,0 +1,1 @@
+{"options":{"changeStreamPreAndPostImages":{"enabled":true}},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"a3b076ff054c425aa02f4e0c8d71b249","collectionName":"funds_chunks","type":"collection"}

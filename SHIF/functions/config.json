@@ -1,0 +1,59 @@
+[
+    {
+        "name": "getTextEmbeddingAda",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "compute_embeddings_fund",
+        "private": true
+    },
+    {
+        "name": "getGpt4",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "compute_embeddings_docs",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "textSearch",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "vectorSearch",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "vectorSearch_copy",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getGpt35turbo",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getGpt4_copy",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "getCustomerInfo",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    }
+]

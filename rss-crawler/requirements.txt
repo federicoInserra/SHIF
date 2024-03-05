@@ -1,0 +1,6 @@
+feedparser==6.0.11
+beautifulsoup4==4.11.1
+selenium==4.18.1
+pymongo==4.6.2
+httpx[http2]==0.27.0
+python-dotenv==1.0.1
