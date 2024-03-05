@@ -26,7 +26,7 @@ By addressing this need, the proposed solution aims to enhance portfolio managem
 
 # Detailed Application Overview
 
-![Image of technical architecture](https://github.com/kamloiic/shif/blob/main/images/architecture.png)
+![Image of technical architecture](https://github.com/federicoInserra/SHIF/blob/main/images/architecture.png)
 
 How it works ?
 
@@ -110,8 +110,8 @@ Then, create another value:
 
 ## Setup the Backend-End
 
-This project was created using Flask as Python server to orchestrate the different LLM agents running on Atlas App Services. 
-In order to start the server run 
+This project was created using Flask as Python server to orchestrate the different LLM agents running on Atlas App Services.
+In order to start the server run
 
 ```bash
 cd agents
