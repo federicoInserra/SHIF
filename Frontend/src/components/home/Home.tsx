@@ -210,14 +210,15 @@ export const HomeComponent = () => {
         </Col>
         {
           assistantResponse ?
-          <>
+          assistantResponse.status === "loading" ?
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            {assistantResponse.status === "loading" ?
             <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
               <Spinner description="Loading…"/>
             </div>
-            :
-            (<>
+          </div>
+          :assistantResponse.answer ?
+          <>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
             <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
                 <div style={{backgroundColor:"white",padding:"5px"}}>
                   {assistantResponse.answer}
@@ -225,23 +226,29 @@ export const HomeComponent = () => {
                 <Button onClick={() => setOpen(true)}>Explain search results</Button>
             </div>
             <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
-                  <div style={{backgroundColor:"white",padding:"5px"}}>
-                    <Subtitle>Links to relevant market news</Subtitle>
-                    {
-                      assistantResponse.links.slice(0,10).map(link => {
-                        return <Link href={link}>{link}</Link>
-                      })
-                    }
-                  </div>
-                  <div style={{backgroundColor:"white",padding:"5px"}}>
-                    <Subtitle>Relevant Stocks</Subtitle>
-                    {assistantResponse.stocks.join(", ")}
-                  </div>
+              <div style={{backgroundColor:"white",padding:"5px"}}>
+                <Subtitle>Links to relevant market news</Subtitle>
+                {
+                  assistantResponse.links.slice(0,10).map(link => {
+                    return <Link href={link}>{link}</Link>
+                  })
+                }
+              </div>
             </div>
-            </>)}
           </div>
-          <div id="filteredChart"></div>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
+              <div id="filteredChart"></div>
+            </div>
+            <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
+              <div style={{backgroundColor:"white",padding:"5px"}}>
+                <Subtitle>Relevant Stocks</Subtitle>
+                {assistantResponse.stocks.join(", ")}
+              </div>
+            </div>
+          </div>
           </>
+          :<></>
           :<></>
         }
       </Row>

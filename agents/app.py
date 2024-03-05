@@ -93,7 +93,7 @@ def resultPickerAgent(query,formattedResults):
     systemPrompt = """You are a financial analyst providing advice and guidance to a client"""
     queryPrompt = f"""Pick the 5 results that can best be used to address the client's query: {query}.
     Explain why you chose them.
-    You must provide your answer in the form:{{"results":[<list of {{"title":<result title>,"content":<result content>}}>],"explanation":<explanation>}}
+    You must provide your answer in the form:{{"results":[{{"title":<result title>,"content":<result content>}}],"explanation":<explanation>}}
     Here are the results:
     {formattedResults}"""
     
