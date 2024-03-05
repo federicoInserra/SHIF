@@ -17,9 +17,9 @@ Team members:
 
 # Justification
 
-In the ever-evolving landscape of financial portfolio management,investors grapple with the challenge of navigating complex market dynamics and responding effectively to liquidity events highlighted in the news. Existing systems often lack the capability to harness the power of a robust decision support system presents.
+In the ever-evolving landscape of financial portfolio management,investors grapple with the challenge of navigating complex market dynamics and responding effectively to liquidity events highlighted in the news. Existing systems often lack the capability to harness the power of a robust decision support system.
 
-Therefore, there is a pressing need for a comprehensive financial solution that seamlessly integrates advanced natural language processing capabilities. Such a system would empower investors to make informed decisions by efficiently invoking and extracting pertinent data from interconnected subsystems leveraging MongoDB Developer Data Platfor all in one solution.
+Therefore, there is a pressing need for a comprehensive financial solution that seamlessly integrates advanced natural language processing capabilities. Such a system would empower investors to make informed decisions by efficiently invoking and extracting pertinent data from interconnected subsystems leveraging MongoDB Developer Data Platform all in one solution.
 
 By addressing this need, the proposed solution aims to enhance portfolio management strategies and enable proactive responses to liquidity events, ultimately fostering greater financial resilience and success in the investment landscape.
 
@@ -35,7 +35,7 @@ How it works ?
 3. Click on a particular customer
 4. Customer dashboard: Stocks, Funds, Age, name etc.
 5. In a textbox at the top enter the query "My customer want to invest more on chinese companies"
-6. And endpoint is called on the back-end and this is orchestrating different LLM agents runnning as Python functions (one agent is doing stocks suggestion, another is assessing results and explaining why the results are good sources for answering client questions, another takes querys as input and performs query expansion on the actual query, another performs re-rank etc)
+6. And endpoint is called on the back-end and this is orchestrating different LLM agents runnning as Python functions (one agent is doing stock suggestions, another is assessing results and explaining why the results are good sources for answering client questions, another takes querys as input and performs query expansion on the actual query, another performs re-rank)
 6. The results are then rendered on the UI to show relevant information
 7. Different Atlas charts are rendered in the UI as well
 8. You can also see the raw JSON outpu from the LLM
