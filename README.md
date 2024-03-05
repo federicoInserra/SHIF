@@ -31,24 +31,14 @@ By addressing this need, the proposed solution aims to enhance portfolio managem
 How it works ?
 
 1. User (fund manager) enter the application
-2. He see a dashboard with the different customers he is managing
+2. He sees a droodown menu with the different customers he is managing
 3. Click on a particular customer
 4. Customer dashboard: Stocks, Funds, Age, name etc.
-5. In a textbox at the top enter the query "_This customer wants to invest more on renewable energy companies. What are some relevant news about that of the last few days?_"
-- textSearch endpoint against RSS
-- vectorSearch endpoint against RSS
-- Send both the results to gpt4 endpoint (RAG) -> show results in the UI
-6. Show RSS news
-7. Then user ask: "_What could be good fund to invest on for this customer"_? (memory? Otherwise just mention again the topic)
-- textSearch endpoint against funds
-- vectorSearch endpoint against funds
-- Send both the results to gpt4 endpoint (RAG) -> show results in the UI
-8. Show pdf or links
-9. Then user ask: “What could be good fund to invest on for this customer”?
-- textSearch endpoint against funds_brochure
-- vectorSearch endpoint against funds_brochure
-- Send both the results to gpt4 endpoint (RAG) -> show results in the UI
-
+5. In a textbox at the top enter the query "My customer want to invest more on chinese companies"
+6. And endpoint is called on the back-end and this is orchestrating different LLM agents runnning as App Services HTTPS endpoints (one agent is doing stocks suggestion, another is assessing results and explaining why the results are good sources for answering client questions, another takes querys as input and performs query expansion on the actual query, another performs re-rank etc)
+6. The results are then rendered on the UI to show relevant information
+7. Different Atlas charts are rendered in the UI as well
+8. You can also see the raw JSON outpu from the LLM
 
 # Demonstration Script
 
@@ -118,6 +108,15 @@ Then, create another value:
 - Type: this time, a Value
 - And link it to your secret. This is how you will securely reference our API key
 
+## Setup the Backend-End
+
+This project was created using Flask as Python server to orchestrate the different LLM agents running on Atlas App Services. 
+In order to start the server run 
+
+```bash
+cd agents
+./install.sh
+```
 
 ## Setup the Front-End
 
