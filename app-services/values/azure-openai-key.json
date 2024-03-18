@@ -1,0 +1,5 @@
+{
+    "name": "azure-openai-key",
+    "value": "azure-openai-key-secret",
+    "from_secret": true
+}

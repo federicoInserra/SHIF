@@ -28,7 +28,7 @@ appservices app create --name "YOUR-APP-NAME" --deployment-model "LOCAL" --provi
 
 This will create a new app configuration directory in your root directory.
 
-* Copy all configuration files from your /SHIP folder, to the new App's configuration directory.
+* Copy all configuration files from your /SHIF folder, to the new App's configuration directory.
 
 * Now import the application
 

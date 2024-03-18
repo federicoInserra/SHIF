@@ -31,8 +31,8 @@ export const HomeComponent = () => {
   var isCustomerChoosen = false;
 
   const sdk = new ChartsEmbedSDK({
-    baseUrl: "https://charts.mongodb.com/charts-john-underwood-udftf"
-    // baseUrl: process.env.REACT_APP_CHART_BASE_URL
+    // baseUrl: "https://charts.mongodb.com/charts-john-underwood-udftf"
+    baseUrl: process.env.REACT_APP_CHART_BASE_URL
   });
 
   const filteredChart = sdk.createChart({
@@ -65,10 +65,6 @@ export const HomeComponent = () => {
       "101": "0e677c18-fb34-499d-ba96-0fed0e596de3"
     }
 
-    // const sdk = new ChartsEmbedSDK({
-    //   baseUrl: "https://charts.mongodb.com/charts-john-underwood-udftf"
-    // });
-
     const chart = sdk.createChart({
       chartId: mapCharts[user],
       height: 400,
@@ -87,12 +83,6 @@ export const HomeComponent = () => {
       width: 400
     });
 
-    // const filteredChart = sdk.createChart({
-    //   chartId: "65e5a2de-f69b-4c74-877e-f0e3ee1a6e59",
-    //   height: 400,
-    //   width: 700
-    // });
-
     setChart(chart)
     setChart(chartWordCloud)
     setChart(chartCurrentStockValue)
@@ -109,27 +99,12 @@ export const HomeComponent = () => {
     chartCurrentStockValue.render(document.getElementById("chartCurrentStockValue"))
     .then(() => console.log("chartCurrentStockValue loaded"))
     .catch(err => console.log(err))
-
-    // filteredChart.render(document.getElementById("filteredChart"))
-    // .then(() =>     filteredChart.setFilter({ "symbol": {"$in": ["NVDA","AAPL"]}})    )
-    // .catch(err => console.log(err))
-    
-
   }
 
 
   const sendPrompt = () => {
     
     setAssistantResponse({...assistantResponse,status:"loading"})
-    // let body = {"prompt": userPrompt,"systemPrompt": userPrompt}
-    // let query = userPrompt;
-    // const requestOptions = {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(body)
-    // }
-
-    
 
     fetch(`http://localhost:3010/advice?q=${userPrompt}`)
       .then(response => response.json())

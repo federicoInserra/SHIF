@@ -1,8 +1,8 @@
 exports = async function getTextEmbeddingAda(query) {
     // Define the OpenAI API url and key.
-    //const url =  context.values.get("azure-openai-endpoint");
+    const azure_openai_endpoint = context.values.get("azure-openai-endpoint");
     const openai_key = context.values.get("azure-openai-key");
-    const url = "https://shif-surfers-hack.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15";
+    const url = `${azure_openai_endpoint}/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15`;
     try{
        let response = await context.http.post({
               url: url,

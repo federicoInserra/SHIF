@@ -144,4 +144,4 @@ You will also see any lint errors in the console.
 
 ## Demo Execution
 
-Please refer to the demonstration video here (link TO BE ADDED).
+Please refer to the demonstration videos linked above.

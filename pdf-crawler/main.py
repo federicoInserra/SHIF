@@ -1,18 +1,18 @@
 import os.path
 from os import path
 from langchain.document_loaders import PyPDFLoader
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import MongoDBAtlasVectorSearch
-
 from pymongo import MongoClient
-
 import os
 import time
+from os import getenv
+from dotenv import load_dotenv
 
-mongo_db_name = 'shif'
+load_dotenv('../.env')
+
+mongo_db_name = getenv("MDB_DB",default="shif")
 mongo_coll_name = 'funds_chunks'
 
-mongo_client = MongoClient("mongodb+srv://<username>:<password>@censos-hack-shif.ahcdv.mongodb.net/")
+mongo_client = MongoClient(getenv('MDBCONNSTR'))
 mongo_coll = mongo_client[mongo_db_name][mongo_coll_name]
 mongo_db_and_coll_path = '{}.{}'.format(mongo_db_name, mongo_coll_name)
 

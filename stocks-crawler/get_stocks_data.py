@@ -4,12 +4,15 @@ from pandas_datareader import data as pdr
 import yfinance
 from pymongo import MongoClient
 import certifi
+from os import getenv
+from dotenv import load_dotenv
 
+load_dotenv('../.env')
 
 # ==============================  DB CONNECTION SETUP  ==============================
-DB = "shif"
+DB = getenv("MDB_DB",default="shif")
 COLLECTION = "stocks"
-MONGODB_URI = "INSERRT YOUR CONNECTION STRING HERE"
+MONGODB_URI = getenv('MDBCONNSTR')
 
 client = MongoClient(
     MONGODB_URI, tlsCAFile=certifi.where())

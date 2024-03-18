@@ -1,20 +1,25 @@
-exports = async function getGpt4(request,response) {
+exports = async function getGpt35turbo(request,response) {
 
     // Define the OpenAI API url and key.
     //const url =  context.values.get("azure-openai-endpoint");
     const openai_key = context.values.get("azure-openai-key");
-    const url = "https://shif-surfers-hack.openai.azure.com/openai/deployments/gpt-4/chat/completions?api-version=2023-05-15";
-    
+    const azure_openai_endpoint = context.values.get("azure-openai-endpoint");
+    const url = `${azure_openai_endpoint}/openai/deployments/gpt-35-turbo/chat/completions?api-version=2023-05-15`;
+
     var query = request.query.query;
     var prompt = request.query.prompt
     
-    // Convert the request body to a JSON string
-    const serialized = request.body.text();
-    // Parse the string into a usable object
-    const body = EJSON.parse(serialized)
-    if(body){
-      query = body.prompt;
-      prompt = body.systemPrompt
+    if(request.body){
+      // Convert the request body to a JSON string
+      const serialized = request.body.text();
+      // Parse the string into a usable object
+      const body = EJSON.parse(serialized)
+      if(body){
+        query = body.prompt;
+        prompt = body.systemPrompt
+      }else{
+        console.log("Failed to parse request body: ",request.body);
+      }
     }
  
     try{

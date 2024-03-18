@@ -3,7 +3,8 @@ exports = async function(changeEvent) {
     const doc = changeEvent.fullDocument;
 
     // Define the OpenAI API url and key.
-    const url = "https://shif-surfers-hack.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15"
+    const azure_openai_endpoint = context.values.get("azure-openai-endpoint");
+    const url = `${azure_openai_endpoint}/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-05-15`;
     // Use the name you gave the value of your API key in the "Values" utility inside of App Services
     const openai_key = context.values.get("azure-openai-key");
     try {
@@ -17,7 +18,7 @@ exports = async function(changeEvent) {
                 'Content-Type': ['application/json']
             },
             body: JSON.stringify({
-              // 'content' field from source document
+                // The field inside your document that contains the data to embed, here it is the "plot" field from the sample movie data.
                 input: doc.content,
             })
         });
@@ -32,7 +33,7 @@ exports = async function(changeEvent) {
             const embedding = responseData.data[0].embedding;
 
             // Use the name of your MongoDB Atlas Cluster
-            const collection = context.services.get("mongodb-atlas").db("shif").collection("docs_chunks");
+            const collection = context.services.get("mongodb-atlas").db("shif").collection("funds_chunks");
 
             // Update the document in MongoDB.
             const result = await collection.updateOne(
