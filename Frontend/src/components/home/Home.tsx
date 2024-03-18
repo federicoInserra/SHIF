@@ -1,25 +1,19 @@
 import "./Home.css";
 import { Col, Row } from "react-bootstrap";
 import { useEffect, useRef, useState } from "react";
-import { H1, H2, H3, Subtitle, Link, Label, Description} from "@leafygreen-ui/typography";
+import { H1, H2, Subtitle, Link, Label, Description} from "@leafygreen-ui/typography";
 import Layout from "../Layout/Layout";
-import { SearchInput, SearchResult } from "@leafygreen-ui/search-input";
 import "regenerator-runtime/runtime";
-import $ from "jquery";
 import ChartsEmbedSDK from "@mongodb-js/charts-embed-dom";
 import TextInput from "@leafygreen-ui/text-input";
 import Button from "@leafygreen-ui/button"
-import TextareaAutosize from 'react-textarea-autosize';
 import { Combobox, ComboboxOption } from "@leafygreen-ui/combobox";
-import TextArea from "@leafygreen-ui/text-area";
 import { Spinner }  from "@leafygreen-ui/loading-indicator";
-import * as Realm from "realm-web";
 import Modal from "@leafygreen-ui/modal";
 
 
 export const HomeComponent = () => {
   
-  const chartDiv = useRef(null)
   const [userPrompt, setUserPrompt] = useState("")
   const [chart, setChart] = useState(null)
   const [hideChart, setHideChart] = useState(true)
@@ -31,12 +25,11 @@ export const HomeComponent = () => {
   var isCustomerChoosen = false;
 
   const sdk = new ChartsEmbedSDK({
-    // baseUrl: "https://charts.mongodb.com/charts-john-underwood-udftf"
     baseUrl: process.env.REACT_APP_CHART_BASE_URL
   });
 
   const filteredChart = sdk.createChart({
-    chartId: "65e5a2de-f69b-4c74-877e-f0e3ee1a6e59",
+    chartId: process.env.REACT_APP_CHART_STOCKS,
     height: 400,
     width: 700
   });
@@ -48,19 +41,19 @@ export const HomeComponent = () => {
   const loadChart = (user) => {
 
     const mapCharts = {
-      "generalChartID": "65e5a2de-f69b-4c74-877e-f0e3ee1a6e59",
+      "generalChartID": process.env.REACT_APP_CHART_STOCKS,
       "100": "65e5ea8e-79a2-4104-8304-bb50e9adf468",
       "101": "73f381d2-3564-416a-877b-2212aa3c8ef7"
     }
 
     const wordCloudCharts = {
-      "generalChartID": "65e5a2de-f69b-4c74-877e-f0e3ee1a6e59",
+      "generalChartID": process.env.REACT_APP_CHART_WORDCLOUD,
       "100": "65e7577b-cf4f-49e4-86d4-a3a2a88246cc",
       "101": "ea351a99-3420-4b2a-9f38-83b70145bc25"
     }
 
     const currentStockValueCharts = {
-      "generalChartID": "65e5a2de-f69b-4c74-877e-f0e3ee1a6e59",
+      "generalChartID": process.env.REACT_APP_CHART_STOCKSVALUE,
       "100": "65e5a82c-fb81-4cea-8531-d253fbe52922",
       "101": "0e677c18-fb34-499d-ba96-0fed0e596de3"
     }

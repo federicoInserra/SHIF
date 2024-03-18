@@ -7,7 +7,7 @@ import time
 from os import getenv
 from dotenv import load_dotenv
 
-load_dotenv('../.env')
+load_dotenv()
 
 mongo_db_name = getenv("MDB_DB",default="shif")
 mongo_coll_name = 'funds_chunks'

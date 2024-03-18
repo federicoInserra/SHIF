@@ -44,7 +44,7 @@ if ! command -v jq &> /dev/null; then
 
     echo 'Writing App Services endppoint to .env for use in other services.'
     if [ -z "$APP_SERVICES_ENDPOINT" ]; then
-        echo "APP_SERVICES_ENDPOINT=\"https://$APP_REGION.$APP_PROVIDER.data.mongodb-api.com/app/$client_app_id/endpoint\"" >> .env
+        echo "\nAPP_SERVICES_ENDPOINT=\"https://$APP_REGION.$APP_PROVIDER.data.mongodb-api.com/app/$client_app_id/endpoint\"" >> .env
         else
         echo "App Services endpoint already exists in .env: $APP_SERVICES_ENDPOINT"
     fi

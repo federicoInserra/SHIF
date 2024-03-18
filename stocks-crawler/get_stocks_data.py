@@ -7,7 +7,7 @@ import certifi
 from os import getenv
 from dotenv import load_dotenv
 
-load_dotenv('../.env')
+load_dotenv()
 
 # ==============================  DB CONNECTION SETUP  ==============================
 DB = getenv("MDB_DB",default="shif")
