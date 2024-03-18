@@ -56,71 +56,50 @@ How it works ?
 mongodump --uri="YOUR-URI" --authenticationDatabase=admin --db=shif
 ```
 
-
 ## Setup the App Services Application
 
 __1. Generate an API Key on Atlas__
 
 * __Generate__ a new __Programmatic API Key__ (record the public and private keys ready for subsequent use). Create the key with the 'Project Owner' permission as it needs permissions to push the app.
 
-__2. Install App Services CLI__
+__2. Install App Services App__
+Rename `example.env` to `.env` and enter the values for your environment.
 
-* Ensure App Services CLI is [installed](https://docs.mongodb.com/realm/deploy/realm-cli-reference/#installation), e.g.:
+__3. Install the App Services Environment__
+Run `./app-services/install.sh`.
+This will create an app with the required function endpoints in your Atlas environment. No more work is required to set up app services.
 
-```bash
-npm install -g atlas-app-services-cli
-```
 
-__3. Configure App Services Environment__
-
-* Using the same __Programmatic API Key__ you created before, login to Realm:
-
-```bash
-appservices login --api-key="ATLAS-API-PUBLIC-KEY" --private-api-key="ATLAS-API-PRIVATE-KEY"
-```
-
-* Create a new app:
-
-```bash
-appservices app create --name "YOUR-APP-NAME" --deployment-model "LOCAL" --provider-region "YOUR-REGION"
-```
-
-This will create a new app configuration directory in your root directory.
-
-* Copy all configuration files from your /SHIP folder, to the new App's configuration directory.
-
-* Now import the application
-
-```bash
-cd YOUR-DIRECTORY
-appservices push
-```
-
-* Set up secrets and values for your Azure OpenAI credentials
-
-Create a new Value :
-- name : azure-openai-key-secret
-- Type : Secret
-- Then paste in your OpenAI API key
-
-Then, create another value:
-- name : azure-openai-key
-- Type: this time, a Value
-- And link it to your secret. This is how you will securely reference our API key
-
-## Setup the Backend-End
+## Setup the Backend
 
 This project was created using Flask as Python server to orchestrate the different LLM agents running on Atlas App Services.
-In order to start the server run
+In order to start the server the first time run:
 
 ```bash
 cd agents
 ./install.sh
 ```
+Afterwards you can run the agents without installing dependencies by using:
+```bash
+cd agents
+./run.sh
+```
 
-## Setup the Front-End
+## Setup the Frontend
 
 This project was created using the React Leafy Library with TS.
+
+To install the pre-configured charts provided in `visualisations.charts` you can import them using the Atlas console.
+
+![Import charts](https://github.com/federicoInserra/SHIF/blob/main/images/charts_import.png)
+
+Then you must set the environment variables for invoking the charts SDK by renaming `frontend/example.env` to `frontend/.env` and putting in the right values.
+
+You can get the charts base URL from your browser when you navigate to charts. Then for individual charts you can get the ID for embedding by selecing 'embed' and then 'javascript SDK'.
+
+![Embed chart](https://github.com/federicoInserra/SHIF/blob/main/images/charts_embed.png)
+
+![javascript SDK](https://github.com/federicoInserra/SHIF/blob/main/images/charts_get_id.png)
 
 Below are the steps to run the project locally
 
@@ -139,7 +118,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
-
 
 
 ## Demo Execution
