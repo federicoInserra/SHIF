@@ -6,9 +6,9 @@ The goal of this project is to build a financial decision support system that le
 - **Project** : SHIF (Something happened In finance)
 - **Team Number** : 2
 - **Team Name** : Shif Surfers
-- **Demonstration Video** : TO BE ADDED
+- **Demonstration Video** : [Presentation (4m20s)](https://youtu.be/a6uoUfoZuhM) | [Demo (6m34s)](https://youtu.be/JlPs1-LmRMg)
 
-Team members:
+**Team members**:
 - John Underwood
 - Paolo Picello
 - Federico Inserra
