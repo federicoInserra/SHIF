@@ -27,7 +27,7 @@ appservices login --api-key="${ATLAS_API_KEY}" --private-api-key="${ATLAS_API_PR
 
 echo "Creating App Services app."
 
-response=$(appservices app create --name "${APP_NAME}" --deployment-model "LOCAL" --provider-region "${APP_PROVIDER}-${APP_REGION}" --cluster "${CLUSTER_NAME}")
+response=$(appservices app create --name "${APP_NAME}" --deployment-model "LOCAL" --provider-region "${APP_PROVIDER}-${APP_REGION}" --cluster "${CLUSTER_NAME}" --cluster-service-name "mongodb-atlas")
 echo $response
 
 if ! command -v jq &> /dev/null; then
@@ -49,7 +49,7 @@ if ! command -v jq &> /dev/null; then
         echo "App Services endpoint already exists in .env: $APP_SERVICES_ENDPOINT"
     fi
     echo "Creating Azure Endpoint value from: ${AZURE_OPENAI_ENDPOINT}"
-    jq '.value = "'$AZURE_OPENAI_ENDPOINT'"' values/azure-openai-endpoint.json > temp.json && mv temp.json values/azure-openai-endpoint.json
+    jq '.value = "'$AZURE_OPENAI_ENDPOINT'"' ./app-services/values/azure-openai-endpoint.json > temp.json && mv temp.json ./app-services/values/azure-openai-endpoint.json
 fi
 
 echo "Creating OpenAI secret from key: ${OPENAI_API_KEY}"
@@ -58,7 +58,7 @@ appservices secrets create --app "${APP_NAME}" --name "azure-openai-key-secret" 
 echo "App created. Copying files from 'app-services' and pushing ${APP_NAME} to App Services."
 cp -r app-services/* ${APP_NAME}
 cd ${APP_NAME}
-appservices push
+appservices push --yes
 
 echo 
 echo "==================================="

@@ -33,19 +33,7 @@
         "disable_arg_logs": true
     },
     {
-        "name": "vectorSearch_copy",
-        "private": false,
-        "run_as_system": true,
-        "disable_arg_logs": true
-    },
-    {
         "name": "getGpt35turbo",
-        "private": false,
-        "run_as_system": true,
-        "disable_arg_logs": true
-    },
-    {
-        "name": "getGpt4_copy",
         "private": false,
         "run_as_system": true,
         "disable_arg_logs": true
