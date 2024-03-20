@@ -6,7 +6,7 @@ exports = async function getGpt4(request,response) {
     const azure_openai_endpoint = context.values.get("azure-openai-endpoint");
     const url = `${azure_openai_endpoint}/openai/deployments/gpt-4/chat/completions?api-version=2023-05-15`;
     
-    
+
     var query = request.query.query;
     var prompt = request.query.prompt
     
@@ -29,6 +29,7 @@ exports = async function getGpt4(request,response) {
                   'Content-Type': ['application/json']
               },
               body: JSON.stringify({
+                temperature:0.0,
                 messages: [
                   {"role": "system", "content": prompt && prompt != "" ? prompt : "You are a helpful assistant."},
                   {"role": "user", "content": query}

@@ -30,6 +30,7 @@ exports = async function getGpt35turbo(request,response) {
                   'Content-Type': ['application/json']
               },
               body: JSON.stringify({
+                temperature:0.0,
                 messages: [
                   {"role": "system", "content": prompt && prompt != "" ? prompt : "You are a helpful assistant."},
                   {"role": "user", "content": query}
