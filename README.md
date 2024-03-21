@@ -62,6 +62,7 @@ Rename `example.env` to `.env` and enter the values for your environment.
 __2. Load data__
 Go to the `data` folder and restore the `shif` database from the mongodump files.
 ```bash
+cd data
 ./install.sh
 ```
 This script also creates the necessary search indexes for the app.
