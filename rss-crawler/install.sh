@@ -50,8 +50,7 @@ if [ "$TEST_RESULT" != "Passed" ]; then
     echo "$TEST_OUTPUT"
     exit 1
     else
-    echo "Test passed. Adding feed configs in feeds.py to MongoDB"
-    . venv/bin/activate && python3 setupCollections.py && python3 installFeeds.py
+    echo "Test passed"
 fi
 
 echo 

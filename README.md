@@ -53,20 +53,28 @@ How it works ?
 * Once the cluster has been fully provisioned, you can load the dump data available in the dump folder.
 
 ```bash
-mongodump --uri="YOUR-URI" --authenticationDatabase=admin --db=shif
+mongorestore --uri="YOUR-URI" --authenticationDatabase=admin
 ```
+## Set up the prepared data
+__1. Set environment variables__
+Rename `example.env` to `.env` and enter the values for your environment.
+
+__2. Load data__
+Go to the `data` folder and restore the `shif` database from the mongodump files.
+```bash
+./install.sh
+```
+This script also creates the necessary search indexes for the app.
 
 ## Setup the App Services Application
 
 __1. Generate an API Key on Atlas__
+* __Generate__ a new __Programmatic API Key__ ([record the public and private keys ready for subsequent use](https://www.mongodb.com/docs/atlas/configure-api-access/#create-an-api-key-in-an-organization)). Create the key with the 'Project Owner' permission as it needs permissions to push the app.
 
-* __Generate__ a new __Programmatic API Key__ (record the public and private keys ready for subsequent use). Create the key with the 'Project Owner' permission as it needs permissions to push the app.
-
-__2. Install App Services App__
-Rename `example.env` to `.env` and enter the values for your environment.
-
-__3. Install the App Services Environment__
-Run `./app-services/install.sh`.
+__2. Install the App Services Environment__
+```bash
+./app-services/install.sh
+```
 This will create an app with the required function endpoints in your Atlas environment. No more work is required to set up app services.
 
 
