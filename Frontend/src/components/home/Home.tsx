@@ -45,7 +45,7 @@ export const HomeComponent = () => {
   useEffect( () => {
     if(assistantResponse && assistantResponse.status && assistantResponse._id && assistantResponse.status === "processing"){
       setTimeout(() => {
-        fetch(`http://localhost:3010/status?id=${assistantResponse._id.$oid}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/status?id=${assistantResponse._id.$oid}`)
         .then(response => response.json())
         .then(data => {
           setAssistantResponse(data)
@@ -113,7 +113,7 @@ export const HomeComponent = () => {
 
 
   const sendPrompt = () => {
-    fetch(`http://localhost:3010/advice?q=${userPrompt}`)
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/advice?q=${userPrompt}`)
       .then(response => response.json())
       .then(data => {
         setAssistantResponse(data)
@@ -196,7 +196,7 @@ export const HomeComponent = () => {
             {assistantResponse.stages_complete ?
               <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
                 {assistantResponse.stages_complete.map(stage => {
-                  return <p>{stage}...</p>
+                  return <p key={stage}>{stage}...</p>
                 })}
               </div>
               :<></>
