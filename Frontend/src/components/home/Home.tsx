@@ -34,8 +34,25 @@ export const HomeComponent = () => {
     width: 700
   });
 
+  useEffect(() => {
+    if(assistantResponse && assistantResponse.stocks && assistantResponse.stocks.length > 0){
+      filteredChart.render(document.getElementById("filteredChart"))
+      .then(() => filteredChart.setFilter({ "symbol": {"$in": assistantResponse.stocks}})    )
+      .catch(err => console.log(err))
+    }
+  }, [assistantResponse,filteredChart])
+
   useEffect( () => {
-  }, [] )
+    if(assistantResponse && assistantResponse.status && assistantResponse._id && assistantResponse.status === "processing"){
+      setTimeout(() => {
+        fetch(`http://localhost:3010/status?id=${assistantResponse._id.$oid}`)
+        .then(response => response.json())
+        .then(data => {
+          setAssistantResponse(data)
+        })
+      }, 2000)
+    }
+  }, [assistantResponse] )
 
 
   const loadChart = (user) => {
@@ -96,9 +113,6 @@ export const HomeComponent = () => {
 
 
   const sendPrompt = () => {
-    
-    setAssistantResponse({...assistantResponse,status:"loading"})
-
     fetch(`http://localhost:3010/advice?q=${userPrompt}`)
       .then(response => response.json())
       .then(data => {
@@ -107,7 +121,6 @@ export const HomeComponent = () => {
         .then(() =>     filteredChart.setFilter({ "symbol": {"$in": data.stocks}})    )
         .catch(err => console.log(err))
       })
-
   }
 
   const fetchUserData = (customerId) => {
@@ -178,8 +191,16 @@ export const HomeComponent = () => {
         </Col>
         {
           assistantResponse ?
-          assistantResponse.status === "loading" ?
+          assistantResponse.status === "processing" ?
           <div style={{ display: 'flex', flexDirection: 'row' }}>
+            {assistantResponse.stages_complete ?
+              <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
+                {assistantResponse.stages_complete.map(stage => {
+                  return <p>{stage}...</p>
+                })}
+              </div>
+              :<></>
+            }
             <div style={{ flex: 1, backgroundColor:"white", padding:"5px" }}>
               <Spinner description="Loading…"/>
             </div>
