@@ -143,7 +143,7 @@ def run(query,state_id):
         vector_summary = json.loads(resultPickerAgent(query,formatted_vector_results))
         lexical_summary = json.loads(resultPickerAgent(query,formatted_lexical_results))
 
-        mdb.update_one({'_id':state_id},{'$set':{"explanation":{"lexical":lexical_summary,"vector":vector_summary}},'$push':{'stages_complete':"Result Ranking"}})
+        mdb.update_one({'_id':state_id},{'$set':{"explanation":{"lexical":lexical_summary['explanation'],"vector":vector_summary['explanation']}},'$push':{'stages_complete':"Result Ranking"}})
 
         print("Running stocks agent...")
         stocksAnswer = stocksAgent(query,formatted_vector_results,formatted_lexical_results)
